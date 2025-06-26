@@ -1,0 +1,35 @@
+
+services:
+  backend:
+    image: care_local
+    build:
+      context: .
+      dockerfile: docker/dev.Dockerfile
+    env_file:
+      - ./docker/.local.env
+    volumes:
+      - .:/app
+    entrypoint: [ "bash", "scripts/start-dev.sh" ]
+    ports:
+      - "9000:9000"
+      - "9876:9876" #debugpy
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_started
+      redis:
+        condition: service_started
+      celery:
+        condition: service_healthy
+
+  celery:
+    image: care_local
+    env_file:
+      - ./docker/.local.env
+    entrypoint: [ "bash", "scripts/celery-dev.sh" ]
+    restart: unless-stopped
+    depends_on:
+      - db
+      - redis
+    volumes:
+      - .:/app

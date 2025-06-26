@@ -1,0 +1,70 @@
+name: Docs
+
+on:
+  push:
+    branches:
+      - develop
+    paths:
+      - "docs/**"
+  pull_request:
+    branches:
+      - develop
+    paths:
+      - "docs/**"
+  workflow_dispatch:
+
+jobs:
+  build-docs:
+    if: github.repository == 'ohcnetwork/care'
+    name: Build docs
+    runs-on: ubuntu-24.04-arm
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: "pipenv"
+
+      - name: Install pipenv
+        run: pip install pipenv
+
+      - name: Install dependencies
+        run: pipenv sync --categories "docs"
+
+      - name: Build docs
+        run: |
+          make -C ./docs html
+
+      - name: Upload sphinx documentation
+        uses: actions/upload-artifact@v4
+        with:
+          name: sphinx-docs
+          path: ./docs/_build/html
+          retention-days: 30
+
+  deploy-docs:
+    if: github.repository == 'ohcnetwork/care' && github.ref == 'refs/heads/develop'
+    name: Deploy docs
+    runs-on: ubuntu-24.04-arm
+    needs: build-docs
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download sphinx documentation
+        uses: actions/download-artifact@v4
+        with:
+          name: sphinx-docs
+          path: ./build
+
+      - name: Add files to bypass jekyll build
+        run: |
+          touch build/.nojekyll
+
+      - name: Deploy docs
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: build

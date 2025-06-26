@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load static i18n %}
+
+{% block content %}
+
+
+<section class="flex mt-4 max-w-lg " style="flex-direction: column">
+<h1 class="flex text-3xl font-bold text-center"> {% translate "Open Healthcare Network" %} </h1>
+      <p class="flex text-lg mt-1 text-gray-700 text-justify text-center" style="justify-content: space-around">
+        {% blocktranslate %}Better Healthcare tools for everyone!{% endblocktranslate %}
+      </p>
+</section>
+
+{% endblock content %}

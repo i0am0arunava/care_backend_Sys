@@ -1,0 +1,94 @@
+{% load static i18n %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>{% block title %}Open HealthCare Network | Care{% endblock title %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta name="robots" content="noindex">
+
+  <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <![endif]-->
+
+  <link rel="icon" href="{% static 'images/favicons/favicon.png' %}">
+
+  {% block css %}
+
+  <!-- Latest compiled and minified Bootstrap CSS -->
+  <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+
+
+  <!-- Your stuff: Third-party CSS libraries go here -->
+
+  <!-- This file stores project-specific CSS -->
+
+  <link href="{% static 'css/project.css' %}" rel="stylesheet">
+  <link href="{% static 'css/custom.min.css' %}" rel="stylesheet">
+
+
+  {% endblock %}
+
+</head>
+
+
+<body class="bg-gray-100 leading-normal tracking-normal font-sans text-gray-900 flex flex-col min-h-screen">
+  <nav x-data="{open: true}" class="bg-white shadow" role="navigation">
+    <div class="container mx-auto p-4 flex flex-wrap items-center md:flex-no-wrap">
+      <div class="mr-4 md:mr-8">
+        <a class="navbar-brand" href="{% url 'home' %}">
+          <img class="block w-24 h-auto" src="{% static 'images/logos/black-logo.svg' %}" alt="" />
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="px-6 py-4 md:px-14 md:py-10 mx-auto">
+
+    {% block content %}
+
+    {% endblock content %}
+  </div> <!-- /container -->
+
+  {% block modal %}{% endblock modal %}
+
+  <!-- Le javascript
+
+    ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  {% block javascript %}
+
+  <!-- place project specific Javascript in this file -->
+
+  <script src="{% static 'js/project.js' %}"></script>
+
+
+  {% endblock javascript %}
+  <script src='https://www.google.com/recaptcha/api.js'></script>
+
+  <footer class="mt-auto p-0">
+    <div class="container-fluid bg-white m-0">
+      <p class="py-4 px-6 mt-4 m-0 text-center col-span-8 mx-auto lg:w-8/12 sm:w-full">
+        <a href="https://digitalpublicgoods.net/registry/coronasafe-care.html">
+          <img
+            class="object-contain h-24 w-full py-2"
+            src="{% static 'images/logos/dpg-logo.svg' %}"
+            alt="Digital Public Goods logo" />
+        </a>
+        <a href="https://ohc.network/">
+          Open Healthcare Network is an open-source digital public good designed by
+          a multi-disciplinary team of innovators and volunteers who are working on a model to support
+          Government efforts.</a>&nbsp;
+        <a href="https://github.com/ohcnetwork" class="care-secondary-color">(Github)</a>
+      </p>
+    </div>
+  </footer>
+
+</body>
+
+</html>

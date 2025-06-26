@@ -1,0 +1,41 @@
+
+services:
+  backend:
+    image: "ghcr.io/ohcnetwork/care:latest"
+    env_file:
+      - ./docker/.prebuilt.env
+    entrypoint: [ "bash", "start.sh" ]
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_started
+      redis:
+        condition: service_started
+      celery-beat:
+        condition: service_healthy
+    ports:
+      - "9000:9000"
+
+  celery-worker:
+    image: "ghcr.io/ohcnetwork/care:latest"
+    env_file:
+      - ./docker/.prebuilt.env
+    entrypoint: [ "bash", "celery_worker.sh" ]
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_started
+      redis:
+        condition: service_started
+      celery-beat:
+        condition: service_healthy
+
+  celery-beat:
+    image: "ghcr.io/ohcnetwork/care:latest"
+    env_file:
+      - ./docker/.prebuilt.env
+    entrypoint: [ "bash", "celery_beat.sh" ]
+    restart: unless-stopped
+    depends_on:
+      - db
+      - redis

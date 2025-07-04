@@ -67,6 +67,24 @@ Prebuilt docker images for server deployments are available
 on [ghcr](https://github.com/ohcnetwork/care/pkgs/container/care)
 
 For backup and restore use [this](/docs/databases/backup.rst) documentation.
+## Here are some screenshot attached
+
+
+
+
+![Screenshot from 2025-07-05 01-39-01](https://github.com/user-attachments/assets/8bb4a77c-26b2-4df5-b543-8c927c54d705)
+
+
+
+![Screenshot from 2025-07-05 01-39-42](https://github.com/user-attachments/assets/cfd2c934-1792-48db-a891-ce02a027da03)
+
+
+
+
+
+
+
+
 
 ## Contributing
 

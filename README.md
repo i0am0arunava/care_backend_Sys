@@ -32,11 +32,7 @@ You can find the docs at https://care-be-docs.ohc.network
 
 ### Staging Deployments
 
-Dev and staging instances for testing are automatically deployed on every commit to the `develop` and `staging` branches.
-The staging instances are available at:
 
-- https://careapi.ohc.network
-- https://careapi-staging.ohc.network
 
 ### Self hosting
 

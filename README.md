@@ -69,6 +69,9 @@ on [ghcr](https://github.com/ohcnetwork/care/pkgs/container/care)
 For backup and restore use [this](/docs/databases/backup.rst) documentation.
 ## Here are some screenshot attached
 
+![Screenshot from 2025-07-05 01-45-18](https://github.com/user-attachments/assets/da8177c9-3094-4e8e-ba6f-074795b70de0)
+
+![Screenshot from 2025-07-05 01-44-42](https://github.com/user-attachments/assets/f1ac5f7f-e90d-4e11-8008-3dd0ca0b76ce)
 
 
 

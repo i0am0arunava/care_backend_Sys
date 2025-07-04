@@ -26,9 +26,7 @@ Care backend makes the following features possible:
 
 ## Getting Started
 
-### Docs and Guides
 
-You can find the docs at https://care-be-docs.ohc.network
 
 ### Staging Deployments
 

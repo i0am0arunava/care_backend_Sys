@@ -1,4 +1,4 @@
-FROM python:3.13-slim-bookworm
+FROM python:3.14-slim-bookworm
 
 ARG APP_HOME=/app
 ARG TYPST_VERSION=0.12.0
